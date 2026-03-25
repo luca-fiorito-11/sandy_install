@@ -15,7 +15,8 @@ set -e  # Stop on first error
 set -o pipefail
 
 # Path to NJOY executable (adjust if necessary)
-export NJOY=NJOY2016/build/njoy
+export NJOY=`pwd`/NJOY2016/build/njoy
+python -c "import sandy; print(sandy.get_njoy())"
 
 # ---------------------------------------------------------------------
 # 1. Show help for the sampling module
