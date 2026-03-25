@@ -6,6 +6,12 @@
         "context": ".."
     },
 
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:1": {
+            "configureZshAsDefaultShell": true
+        }
+    },
+
     "customizations": {
         "vscode": {
             "extensions": [
@@ -22,12 +28,4 @@
     },
 
     "remoteUser": "vscode",
-
-    "features": {
-        "ghcr.io/devcontainers/features/common-utils:1": {
-            "configureZshAsDefaultShell": true
-        }
-    },
-
-    "_postCreateCommand": "bash .devcontainer/post-create.sh"
 }
