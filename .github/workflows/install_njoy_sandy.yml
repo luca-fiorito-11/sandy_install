@@ -46,6 +46,7 @@ jobs:
           -w /workspace \
           ghcr.io/${{ github.repository_owner }}/$(basename ${{ github.repository }}):devcontainer \
           bash -e -o pipefail -c "
-            bash INSTALL_NJOY.sh
+            bash INSTALL_NJOY.sh && \
+            bash INSTALL_SANDY.sh && \
             bash INSTALL_SANDY.sh
           "
