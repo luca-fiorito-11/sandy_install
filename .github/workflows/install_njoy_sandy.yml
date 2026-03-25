@@ -4,8 +4,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - 'INSTALL_NJOY.sh'
-      - '.github/workflows/install-njoy.yml'
+      - '.github/workflows/install_njoy_sandy.yml'
 
 jobs:
   install-njoy:
@@ -38,7 +37,7 @@ jobs:
     # ------------------------------------------------------------
     # Run the NJOY installation script inside the devcontainer
     # ------------------------------------------------------------
-    - name: Run NJOY installation inside Devcontainer
+    - name: Run NJOY and SANDY installation inside Devcontainer
       run: |
         docker run --rm \
           -u root \
@@ -48,5 +47,5 @@ jobs:
           bash -e -o pipefail -c "
             bash INSTALL_NJOY.sh && \
             bash INSTALL_SANDY.sh && \
-            bash INSTALL_SANDY.sh
+            bash RUN_SANDY.sh
           "
