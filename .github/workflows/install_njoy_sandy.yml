@@ -1,4 +1,4 @@
-name: Install NJOY (Devcontainer Image)
+name: Install NJOY and SANDY (Devcontainer Image)
 
 on:
   workflow_dispatch:
