@@ -1,0 +1,50 @@
+name: Install NJOY (Devcontainer Image)
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'INSTALL_NJOY.sh'
+      - '.github/workflows/install-njoy.yml'
+
+jobs:
+  install-njoy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # ------------------------------------------------------------
+    # Checkout repository (we need INSTALL_NJOY.sh)
+    # ------------------------------------------------------------
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # ------------------------------------------------------------
+    # Log in to GitHub Container Registry
+    # ------------------------------------------------------------
+    - name: Log in to GitHub Container Registry
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    # ------------------------------------------------------------
+    # Pull the prebuilt Devcontainer image
+    # ------------------------------------------------------------
+    - name: Pull Devcontainer Image
+      run: |
+        docker pull ghcr.io/${{ github.repository_owner }}/$(basename ${{ github.repository }}):devcontainer
+
+    # ------------------------------------------------------------
+    # Run the NJOY installation script inside the devcontainer
+    # ------------------------------------------------------------
+    - name: Run NJOY installation inside Devcontainer
+      run: |
+        docker run --rm \
+          -u root \
+          -v ${{ github.workspace }}:/workspace \
+          -w /workspace \
+          ghcr.io/${{ github.repository_owner }}/$(basename ${{ github.repository }}):devcontainer \
+          bash -e -o pipefail -c "
+            bash INSTALL_NJOY.sh
+          "
