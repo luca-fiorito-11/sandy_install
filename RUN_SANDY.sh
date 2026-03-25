@@ -36,7 +36,7 @@ python -m sandy.sampling H1_xs.jeff40 --samples 2
 # 3. Run sampling on Uranium-235 (U235) fission yields from JEFF-4.0
 #    Again using 2 samples as an example.
 # ---------------------------------------------------------------------
-python -m sandy.sampling U235_fy.jeff40 --samples 2
+python -m sandy.sampling U235_nfpy.jeff40 --samples 2
 
 
 # ---------------------------------------------------------------------
