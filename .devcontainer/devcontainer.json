@@ -21,11 +21,10 @@
                 "charliermarsh.ruff"
             ],
             "settings": {
-                "python.defaultInterpreterPath": "/opt/venv/bin/python",
-                "jupyter.notebookEditor.defaultKernel": "sandy"
+                "python.defaultInterpreterPath": "/usr/local/bin/python3"
             }
         }
     },
 
-    "remoteUser": "vscode",
+    "remoteUser": "vscode"
 }
